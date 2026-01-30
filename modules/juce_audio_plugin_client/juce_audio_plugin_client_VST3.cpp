@@ -1162,6 +1162,12 @@ public:
                         trackProperties.colourARGB.emplace ((uint32) colour);
                 }
 
+                {
+                    Steinberg::int64 index;
+                    if (list->getInt (Vst::ChannelContext::kChannelIndexKey, index) == kResultTrue)
+                        trackProperties.index = std::make_optional (index);
+                }
+
 
 
                 if (MessageManager::getInstance()->isThisTheMessageThread())

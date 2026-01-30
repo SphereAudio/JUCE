@@ -1321,6 +1321,7 @@ public:
         std::optional<String> name;       ///< The name of the track - this will be empty if the track name is not known
         std::optional<uint32> colourARGB; ///< The colour of the track - The format of this number is: ((alpha << 24) | (red << 16) | (green << 8) | blue).
                                           ///< You can pass this to the constructor of Colour to create a matching colour instance.
+        std::optional<uint64> index;      ///< The Index of the track - this will be empty if the track index is not known
 
         // other properties may be added in the future
     };
