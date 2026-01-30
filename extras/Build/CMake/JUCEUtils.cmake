@@ -1488,7 +1488,9 @@ function(_juce_get_vst3_category_string target out_var)
             list(INSERT vst3_categories 0 Instrument)
         endif()
 
-        if(Fx IN_LIST vst3_categories)
+        # Steinberg DAWs need Spatial as first plugin type to be recognized as a spatial plugin
+        # which can be used as a panner, upmixer/downmixer etc.
+        if ((Fx IN_LIST vst3_categories) AND (NOT Spatial IN_LIST vst3_categories))
             list(REMOVE_ITEM vst3_categories Fx)
             list(INSERT vst3_categories 0 Fx)
         endif()
