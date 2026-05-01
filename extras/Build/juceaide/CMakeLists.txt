@@ -112,9 +112,10 @@ else()
 
     set(PASSTHROUGH_ARGS "")
 
-    if(CMAKE_OSX_DEPLOYMENT_TARGET)
-        list(APPEND PASSTHROUGH_ARGS "-DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}")
-    endif()
+    # When building the juceaide tools, build for the default OS, not the version specified for the target
+    # if(CMAKE_OSX_DEPLOYMENT_TARGET)
+    #     list(APPEND PASSTHROUGH_ARGS "-DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+    # endif()
 
     if(CMAKE_C_COMPILER_LAUNCHER)
         list(APPEND PASSTHROUGH_ARGS "-DCMAKE_C_COMPILER_LAUNCHER=${CMAKE_C_COMPILER_LAUNCHER}")
