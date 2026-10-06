@@ -788,7 +788,7 @@ private:
         {
             if (auto* root = owner.rootItem)
             {
-                const auto startY = owner.rootItemVisible ? 0 : -root->itemHeight;
+                const auto startY = owner.rootItemVisible ? 0 : -root->getItemHeight();
 
                 root->updatePositions (startY);
                 getViewedComponent()->setSize (jmax (getMaximumVisibleWidth(), root->totalWidth + 50),
