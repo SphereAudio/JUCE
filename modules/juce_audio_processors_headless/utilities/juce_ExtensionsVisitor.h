@@ -38,6 +38,7 @@
 namespace Steinberg::Vst
 {
     class IComponent;
+    class IEditController;
 } // namespace Steinberg::Vst
 
 /** @endcond */
@@ -100,6 +101,16 @@ struct ExtensionsVisitor
     {
         virtual ~VST3Client() = default;
         virtual Steinberg::Vst::IComponent* getIComponentPtr() const noexcept = 0;
+
+        /** Returns the plugin's IEditController, which may be the same object as the IComponent
+            (single component plugins) or a separate controller class created through the
+            plugin factory.
+
+            Like getIComponentPtr(), the pointer is not retained: it is owned by the plugin
+            instance and only valid for as long as the instance is alive, so don't call release()
+            on it. Returns nullptr if the plugin has no controller.
+        */
+        virtual Steinberg::Vst::IEditController* getIEditControllerPtr() const noexcept = 0;
 
         virtual MemoryBlock getPreset() const = 0;
         virtual bool setPreset (const MemoryBlock&) const = 0;

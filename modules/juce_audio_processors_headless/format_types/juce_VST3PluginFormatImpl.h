@@ -2234,6 +2234,8 @@ public:
 
             Vst::IComponent* getIComponentPtr() const noexcept override   { return instance->holder->component.get(); }
 
+            Vst::IEditController* getIEditControllerPtr() const noexcept override   { return instance->editController.get(); }
+
             MemoryBlock getPreset() const override             { return instance->getStateForPresetFile(); }
 
             bool setPreset (const MemoryBlock& rawData) const override
